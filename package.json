@@ -23,46 +23,51 @@
       {
         "title": "Password Generator",
         "properties": {
+          "vscode-password-generator.length": {
+            "type": "number",
+            "default": 10,
+            "description": "The length of password to generate"
+          },
           "vscode-password-generator.includeUppercaseLetters": {
             "type": "boolean",
-						"default": true,
-						"description": "Include numbers in the generated password"
-					},
-					"vscode-password-generator.includeLowercaseLetters": {
-						"type": "boolean",
-						"default": true,
-						"description": "Include numbers in the generated password"
-					},
+            "default": true,
+            "description": "Include numbers in the generated password"
+          },
+          "vscode-password-generator.includeLowercaseLetters": {
+            "type": "boolean",
+            "default": true,
+            "description": "Include numbers in the generated password"
+          },
           "vscode-password-generator.includeNumbers": {
             "type": "boolean",
             "default": false,
             "description": "Include numbers in the generated password"
           },
-					"vscode-password-generator.includeSymbols": {
-						"type": "boolean",
-						"default": false,
-						"description": "Include symbols in the generated password"
-					},
-          "vscode-password-generator.symbols": {
-						"type": "string",
-						"default": "",
-						"description": "A set of symbols to select from when for a generated password"
-					},
-          "vscode-password-generator.excluded": {
-						"type": "string",
-						"default": "",
-						"description": "A set of characters to exclude from the generated password"
-					},
-          "vscode-password-generator.length": {
-						"type": "number",
-						"default": 10,
-						"description": "The length of password to generate"
-					},
+          "vscode-password-generator.includeSymbols": {
+            "type": "boolean",
+            "default": false,
+            "description": "Include symbols in the generated password"
+          },
+          "vscode-password-generator.symbolCharacters": {
+            "type": "string",
+            "default": "",
+            "description": "A set of symbols to select from when for a generated password"
+          },
+          "vscode-password-generator.excludeCharacters": {
+            "type": "string",
+            "default": "",
+            "description": "A set of characters to exclude from the generated password"
+          },
+          "vscode-password-generator.excludeSimilarCharacters": {
+            "type": "boolean",
+            "default": false,
+            "description": "Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password"
+          },
           "vscode-password-generator.strict": {
-						"type": "boolean",
-						"default": true,
-						"description": "At least one of each included character type in the generated password"
-					}
+            "type": "boolean",
+            "default": true,
+            "description": "At least one of each included character type in the generated password"
+          }
         }
       }
     ]

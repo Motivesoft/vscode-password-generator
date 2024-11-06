@@ -33,10 +33,14 @@ function generatePassword(): string {
 
 	// Generate a password
 	return generator.generate({
-		length: 10,
+		length: configuration.get("length"),
 		includeUppercase: configuration.get("includeUppercaseLetters"),
 		includeLowercase: configuration.get("includeLowercaseLetters"),
 		includeNumbers: configuration.get("includeNumbers"),
 		includeSymbols: configuration.get("includeSymbols"),
+		symbolCharacters: configuration.get("symbolCharacters"),
+		excludeCharacters: configuration.get("excludeCharacters"),
+		excludeSimilarCharacters: configuration.get("excludeSimilarCharacters"),
+		strict: configuration.get("strict")
 	});
 }

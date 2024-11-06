@@ -33,12 +33,12 @@ export interface GenerateOptions {
      * List of characters to be excluded from the password
      * @default ""
      */
-    exclude?: string;
+    excludeCharacters?: string;
     /**
      * List of characters to be considered as valid symbols
      * @default ""
      */
-    symbols?: string;
+    symbolCharacters?: string;
     /**
      * Password should include at least one character from each pool
      * @default false
@@ -60,8 +60,8 @@ export function generate(options?: GenerateOptions): string {
     var charset: string = "";
     var password: string = "";
 
-    if (options?.symbols) {
-        charsetSpecial = options.symbols;
+    if (options?.symbolCharacters) {
+        charsetSpecial = options.symbolCharacters;
     }
 
     // Remove either similar or specifically excluded characters
@@ -70,8 +70,8 @@ export function generate(options?: GenerateOptions): string {
         excluded += charsetSimilar;
     }
 
-    if (options?.exclude) {
-        excluded += options.exclude;
+    if (options?.excludeCharacters) {
+        excluded += options.excludeCharacters;
     }
 
     if (excluded.length > 0) {
