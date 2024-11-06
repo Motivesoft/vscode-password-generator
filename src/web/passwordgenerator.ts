@@ -74,18 +74,12 @@ export function generate(options?: GenerateOptions): string {
         excluded += options.excludeCharacters;
     }
 
-    console.log(`Excluded: ${excluded}`);
-
-    console.log(`lower1: ${charsetLower}`);
-
     if (excluded.length > 0) {
         charsetUpper = filter(charsetUpper, excluded);
         charsetLower = filter(charsetLower, excluded);
         charsetDigits = filter(charsetDigits, excluded);
         charsetSpecial = filter(charsetSpecial, excluded);
     }
-
-    console.log(`lower2: ${charsetLower}`);
 
     // Build a list of candidate characters from what's left
     if (options?.includeNumbers) {
@@ -138,14 +132,10 @@ export function generate(options?: GenerateOptions): string {
         return "";
     }
 
-    console.log(`Charset: [${charset}]`);
-
     // Fill the password to length
     while (length > password.length) {
         password += randChar(charset);
     }
-
-    console.log(`Unsorted: [${password}]`);
 
     // Shuffle the password
     const array = password.split('');
@@ -154,8 +144,6 @@ export function generate(options?: GenerateOptions): string {
         [array[i], array[j]] = [array[j], array[i]];
     }
     password = array.join('');
-
-    console.log(`Sorted: [${password}]`);
 
     return password;
 }
@@ -179,7 +167,6 @@ export function generateMultiple(count: number, options?: GenerateOptions): stri
 function filter(charset: string, excluded: string): string {
     const filterSet = new Set(excluded);
 
-    // Use Array.from to iterate over the characters, filter, and join back into a string
     return Array.from(charset)
         .filter(char => !filterSet.has(char))
         .join('');
