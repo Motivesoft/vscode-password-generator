@@ -1,5 +1,5 @@
 {
-  "name": "vscode-password-generator",
+  "name": "vscode-password-generator-extension",
   "displayName": "Password Generator",
   "description": "Generates passwords directly onto the clipboard or the current editor window",
   "version": "1.0.0",
@@ -35,11 +35,11 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-password-generator.generateToClipboard",
+        "command": "vscode-password-generator-extension.generateToClipboard",
         "title": "Copy New Password to the Clipboard"
       },
       {
-        "command": "vscode-password-generator.generateToEditor",
+        "command": "vscode-password-generator-extension.generateToEditor",
         "title": "Copy New Password to the current editor window"
       }
     ],
@@ -47,47 +47,47 @@
       {
         "title": "Password Generator",
         "properties": {
-          "vscode-password-generator.length": {
+          "vscode-password-generator-extension.length": {
             "type": "number",
             "default": 10,
             "description": "The length of password to generate"
           },
-          "vscode-password-generator.includeUppercaseLetters": {
+          "vscode-password-generator-extension.includeUppercaseLetters": {
             "type": "boolean",
             "default": true,
             "description": "Include uppercase letters in the generated password"
           },
-          "vscode-password-generator.includeLowercaseLetters": {
+          "vscode-password-generator-extension.includeLowercaseLetters": {
             "type": "boolean",
             "default": true,
             "description": "Include lowercase letters in the generated password"
           },
-          "vscode-password-generator.includeNumbers": {
+          "vscode-password-generator-extension.includeNumbers": {
             "type": "boolean",
             "default": false,
             "description": "Include numbers in the generated password"
           },
-          "vscode-password-generator.includeSymbols": {
+          "vscode-password-generator-extension.includeSymbols": {
             "type": "boolean",
             "default": false,
             "description": "Include symbols in the generated password"
           },
-          "vscode-password-generator.symbolCharacters": {
+          "vscode-password-generator-extension.symbolCharacters": {
             "type": "string",
             "default": "",
             "description": "Define the set of symbols to select from instead of the default used by the extension"
           },
-          "vscode-password-generator.excludeCharacters": {
+          "vscode-password-generator-extension.excludeCharacters": {
             "type": "string",
             "default": "",
             "description": "Define a set of characters to exclude from the generated password"
           },
-          "vscode-password-generator.excludeSimilarCharacters": {
+          "vscode-password-generator-extension.excludeSimilarCharacters": {
             "type": "boolean",
             "default": false,
             "description": "Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password"
           },
-          "vscode-password-generator.strict": {
+          "vscode-password-generator-extension.strict": {
             "type": "boolean",
             "default": true,
             "description": "At least one of each included character type in the generated password"
