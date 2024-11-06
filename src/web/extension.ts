@@ -7,10 +7,10 @@ import * as generator from './passwordgenerator';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Extension "vscode-password-generator-extension" is now active');
+	console.log('Extension "vscode-password-generator" is now active');
 
 	// Create password(s) and paste them into the editor window
-	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator-extension.generateToEditor', () => {
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator.generateToEditor', () => {
 		// This will create and insert multiple passwords if a multi-select cursor is being used
 		let editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	// Create a password and copy it onto the cliboard
-	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator-extension.generateToClipboard', () => {
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator.generateToClipboard', () => {
 		vscode.env.clipboard.writeText(generatePassword());
 
 		// Display a message box to the user
@@ -34,7 +34,7 @@ export function deactivate() { }
 
 function generatePassword(): string {
 	// Get the configuration settings for password generation instructions
-	const configuration = vscode.workspace.getConfiguration("vscode-password-generator-extension");
+	const configuration = vscode.workspace.getConfiguration("vscode-password-generator");
 
 	// Generate a password
 	return generator.generate({

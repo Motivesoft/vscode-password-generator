@@ -23,15 +23,15 @@ Here's the data formatted as a markdown table of key, default value, and descrip
 
 | Key | Default Value | Description |
 |-----|---------------|-------------|
-| vscode-password-generator-extension.length | 10 | The length of password to generate |
-| vscode-password-generator-extension.includeUppercaseLetters | true | Include uppercase letters in the generated password |
-| vscode-password-generator-extension.includeLowercaseLetters | true | Include lowercase letters in the generated password |
-| vscode-password-generator-extension.includeNumbers | false | Include numbers in the generated password |
-| vscode-password-generator-extension.includeSymbols | false | Include symbols in the generated password |
-| vscode-password-generator-extension.symbolCharacters | "" | Define the set of symbols to select from instead of the default used by the extension |
-| vscode-password-generator-extension.excludeCharacters | "" | Define a set of characters to exclude from the generated password |
-| vscode-password-generator-extension.excludeSimilarCharacters | false | Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password |
-| vscode-password-generator-extension.strict | true | Ensure least one of each included character type in the generated password |
+| vscode-password-generator.length | 10 | The length of password to generate |
+| vscode-password-generator.includeUppercaseLetters | true | Include uppercase letters in the generated password |
+| vscode-password-generator.includeLowercaseLetters | true | Include lowercase letters in the generated password |
+| vscode-password-generator.includeNumbers | false | Include numbers in the generated password |
+| vscode-password-generator.includeSymbols | false | Include symbols in the generated password |
+| vscode-password-generator.symbolCharacters | "" | Define the set of symbols to select from instead of the default used by the extension |
+| vscode-password-generator.excludeCharacters | "" | Define a set of characters to exclude from the generated password |
+| vscode-password-generator.excludeSimilarCharacters | false | Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password |
+| vscode-password-generator.strict | true | Ensure least one of each included character type in the generated password |
 
 ## Known Issues
 
