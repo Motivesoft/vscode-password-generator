@@ -8,22 +8,22 @@ export interface GenerateOptions {
      * Should the password include numbers
      * @default false
      */
-    numbers?: boolean;
+    includeNumbers?: boolean;
     /**
      * Should the password include symbols, or symbols to include
      * @default false
      */
-    symbols?: boolean | string;
+    includeSymbols?: boolean;
     /**
      * Should the password include lowercase characters
      * @default true
      */
-    lowercase?: boolean;
+    includeLowercase?: boolean;
     /**
      * Should the password include uppercase characters
      * @default true
      */
-    uppercase?: boolean;
+    includeUppercase?: boolean;
     /**
      * Should exclude visually similar characters like 'i' and 'I'
      * @default false
@@ -34,6 +34,11 @@ export interface GenerateOptions {
      * @default ""
      */
     exclude?: string;
+    /**
+     * List of characters to be considered as valid symbols
+     * @default ""
+     */
+    symbols?: string;
     /**
      * Password should include at least one character from each pool
      * @default false
@@ -55,25 +60,29 @@ export function generate(options?: GenerateOptions): string {
     var charset: string = "";
     var password: string = "";
 
+    if (options?.symbols) {
+        charsetSpecial = options.symbols;
+    }
+
     // Remove either similar or specifically excluded characters
-    var excluded = ""; 
+    var excluded = "";
     if (options?.excludeSimilarCharacters) {
-        excluded += charsetSimilar;        
+        excluded += charsetSimilar;
     }
 
     if (options?.exclude) {
-        excluded += options.exclude;        
-    }    
+        excluded += options.exclude;
+    }
 
     if (excluded.length > 0) {
-        charsetUpper = filter( charsetUpper, excluded );
-        charsetLower = filter( charsetLower, excluded );
-        charsetDigits = filter( charsetDigits, excluded );
-        charsetSpecial = filter( charsetSpecial, excluded );
+        charsetUpper = filter(charsetUpper, excluded);
+        charsetLower = filter(charsetLower, excluded);
+        charsetDigits = filter(charsetDigits, excluded);
+        charsetSpecial = filter(charsetSpecial, excluded);
     }
 
     // Build a list of candidate characters from what's left
-    if (options?.numbers) {
+    if (options?.includeNumbers) {
         charset += charsetDigits;
 
         // If we're being strict, make sure there is one of these characters in the password
@@ -82,7 +91,7 @@ export function generate(options?: GenerateOptions): string {
         }
     }
 
-    if (options?.uppercase) {
+    if (options?.includeUppercase) {
         charset += charsetUpper;
 
         // If we're being strict, make sure there is one of these characters in the password
@@ -91,7 +100,7 @@ export function generate(options?: GenerateOptions): string {
         }
     }
 
-    if (options?.lowercase) {
+    if (options?.includeLowercase) {
         charset += charsetLower;
 
         // If we're being strict, make sure there is one of these characters in the password
@@ -100,7 +109,7 @@ export function generate(options?: GenerateOptions): string {
         }
     }
 
-    if (options?.symbols) {
+    if (options?.includeSymbols) {
         charset += charsetSpecial;
 
         // If we're being strict, make sure there is one of these characters in the password
@@ -117,25 +126,31 @@ export function generate(options?: GenerateOptions): string {
 
     // Strict password and short password may get in each other's way
     var length = options?.length || 10;
-    if( length < password.length) {
+    if (length < password.length) {
         // Can't satisfy the strictness rule in a password this short
         console.error("Requested password length is too short for a strict password");
         return "";
     }
 
+    console.log(`Charset: [${charset}]`);
+
     // Fill the password to length
-    while(length > password.length) {
+    while (length > password.length) {
         password += randChar(charset);
     }
+
+    console.log(`Unsorted: [${password}]`);
 
     // Shuffle the password
     const array = password.split('');
     for (let i = array.length - 1; i > 0; i--) {
-      const j = rand(i + 1);
-      [array[i], array[j]] = [array[j], array[i]];
+        const j = rand(i + 1);
+        [array[i], array[j]] = [array[j], array[i]];
     }
     password = array.join('');
-  
+
+    console.log(`Sorted: [${password}]`);
+
     return password;
 }
 
@@ -155,23 +170,23 @@ export function generateMultiple(count: number, options?: GenerateOptions): stri
 /**
  * Eliminate excluded characters from the input string and return the clean version 
  */
-function filter(charset: string, excluded: string) : string {
+function filter(charset: string, excluded: string): string {
     for (const element of excluded) {
-        charset.replace(element,"");
+        charset.replace(element, "");
     }
 
     return charset;
 }
 
 /** 
- * Return a random integer between 0 and <code>upper</code> 
+ * Return a random integer betwen 0 and (upper-1) inclusive 
  */
-function rand(upper: number) : number {
-    return Math.floor(Math.random() * (upper + 1));
+function rand(upper: number): number {
+    return Math.floor(Math.random() * upper);
 }
 /** 
  * Return a random integer between 0 and <code>upper</code> 
  */
-function randChar(charset: string) : string {
+function randChar(charset: string): string {
     return charset[rand(charset.length)];
 }

@@ -15,11 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
 	const disposable = vscode.commands.registerCommand('vscode-password-generator.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		const password = generator.generate( {
-			length: 10 
-		});
+		const password = generatePassword();
 
 		// Display a message box to the user
 		vscode.window.showInformationMessage(`Password generated: ${password}`);
@@ -29,4 +25,18 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
+
+function generatePassword(): string {
+	// Read the configuration settings for password generation instructions
+	const configuration = vscode.workspace.getConfiguration("vscode-password-generator");
+
+	// Generate a password
+	return generator.generate({
+		length: 10,
+		includeUppercase: configuration.get("includeUppercaseLetters"),
+		includeLowercase: configuration.get("includeLowercaseLetters"),
+		includeNumbers: configuration.get("includeNumbers"),
+		includeSymbols: configuration.get("includeSymbols"),
+	});
+}
