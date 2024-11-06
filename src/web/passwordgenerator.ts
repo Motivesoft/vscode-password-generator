@@ -74,12 +74,18 @@ export function generate(options?: GenerateOptions): string {
         excluded += options.excludeCharacters;
     }
 
+    console.log(`Excluded: ${excluded}`);
+
+    console.log(`lower1: ${charsetLower}`);
+
     if (excluded.length > 0) {
         charsetUpper = filter(charsetUpper, excluded);
         charsetLower = filter(charsetLower, excluded);
         charsetDigits = filter(charsetDigits, excluded);
         charsetSpecial = filter(charsetSpecial, excluded);
     }
+
+    console.log(`lower2: ${charsetLower}`);
 
     // Build a list of candidate characters from what's left
     if (options?.includeNumbers) {
@@ -171,11 +177,12 @@ export function generateMultiple(count: number, options?: GenerateOptions): stri
  * Eliminate excluded characters from the input string and return the clean version 
  */
 function filter(charset: string, excluded: string): string {
-    for (const element of excluded) {
-        charset.replace(element, "");
-    }
+    const filterSet = new Set(excluded);
 
-    return charset;
+    // Use Array.from to iterate over the characters, filter, and join back into a string
+    return Array.from(charset)
+        .filter(char => !filterSet.has(char))
+        .join('');
 }
 
 /** 
