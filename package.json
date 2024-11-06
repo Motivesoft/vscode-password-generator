@@ -55,12 +55,12 @@
           "vscode-password-generator.includeUppercaseLetters": {
             "type": "boolean",
             "default": true,
-            "description": "Include numbers in the generated password"
+            "description": "Include uppercase letters in the generated password"
           },
           "vscode-password-generator.includeLowercaseLetters": {
             "type": "boolean",
             "default": true,
-            "description": "Include numbers in the generated password"
+            "description": "Include lowercase letters in the generated password"
           },
           "vscode-password-generator.includeNumbers": {
             "type": "boolean",
@@ -75,12 +75,12 @@
           "vscode-password-generator.symbolCharacters": {
             "type": "string",
             "default": "",
-            "description": "A set of symbols to select from when for a generated password"
+            "description": "Define the set of symbols to select from instead of the default used by the extension"
           },
           "vscode-password-generator.excludeCharacters": {
             "type": "string",
             "default": "",
-            "description": "A set of characters to exclude from the generated password"
+            "description": "Define a set of characters to exclude from the generated password"
           },
           "vscode-password-generator.excludeSimilarCharacters": {
             "type": "boolean",

@@ -1,65 +1,48 @@
-# vscode-password-generator README
+# Password Generator
 
-This is the README for your extension "vscode-password-generator". After writing up a brief description, we recommend including the following sections.
+This extension generates passwords as combinations of letters, numbers and symbols to insert into the current editor window, or place onto the clipboard.
+
+The composition and length of the passwords is configurable.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Two commands can be used:
+- `Copy New Password to the Clipboard`
+- `Copy New Password to the current editor window`
 
-For example if there is an image subfolder under your extension project workspace:
+See [Extension Settings](#extension-settings) to see the ways in which the password composition can be controlled.
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+None.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Here's the data formatted as a markdown table of key, default value, and description:
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+| Key | Default Value | Description |
+|-----|---------------|-------------|
+| vscode-password-generator.length | 10 | The length of password to generate |
+| vscode-password-generator.includeUppercaseLetters | true | Include uppercase letters in the generated password |
+| vscode-password-generator.includeLowercaseLetters | true | Include lowercase letters in the generated password |
+| vscode-password-generator.includeNumbers | false | Include numbers in the generated password |
+| vscode-password-generator.includeSymbols | false | Include symbols in the generated password |
+| vscode-password-generator.symbolCharacters | "" | Define the set of symbols to select from instead of the default used by the extension |
+| vscode-password-generator.excludeCharacters | "" | Define a set of characters to exclude from the generated password |
+| vscode-password-generator.excludeSimilarCharacters | false | Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password |
+| vscode-password-generator.strict | true | Ensure least one of each included character type in the generated password |
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None reported.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Initial release
+- Insert new passwords into the current editor window or to the clipboard
+- Configurable password settings to customize the generated password
+  - Choose the desired combination of upper and lower case letters, numbers, symbols and length 
+- Works on Code for the desktop or for the web

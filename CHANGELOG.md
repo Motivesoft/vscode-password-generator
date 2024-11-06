@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to the "vscode-password-generator" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
+## [1.0.0]
 
 - Initial release
+- Insert new passwords into the current editor window or to the clipboard
+- Configurable password settings to customize the generated password
+  - Choose the desired combination of upper and lower case letters, numbers, symbols and length 
+- Works on Code for the desktop or for the web
+
+[1.0.0]: https://github.com/Motivesoft/vscode-password-generator/releases/tag/v1.0.0
