@@ -7,28 +7,33 @@ import * as generator from './passwordgenerator';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscode-password-generator" is now active in the web extension host!');
+	console.log('Extension "vscode-password-generator" is now active');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscode-password-generator.helloWorld', () => {
-		const password = generatePassword();
+	// Create password(s) and paste them into the editor window
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator.generateToEditor', () => {
+		// This will create and insert multiple passwords if a multi-select cursor is being used
+		let editor = vscode.window.activeTextEditor;
+		if (editor) {
+			editor.edit(edit => {
+				editor.selections.forEach(v => edit.replace(v, generatePassword()));
+			});
+		}
+	}));
+
+	// Create a password and copy it onto the cliboard
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-password-generator.generateToClipboard', () => {
+		vscode.env.clipboard.writeText(generatePassword());
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage(`Password generated: ${password}`);
-	});
-
-	context.subscriptions.push(disposable);
+		vscode.window.showInformationMessage(`Password generated and copied to clipboard`);
+	}));
 }
 
 // This method is called when your extension is deactivated
 export function deactivate() { }
 
 function generatePassword(): string {
-	// Read the configuration settings for password generation instructions
+	// Get the configuration settings for password generation instructions
 	const configuration = vscode.workspace.getConfiguration("vscode-password-generator");
 
 	// Generate a password
