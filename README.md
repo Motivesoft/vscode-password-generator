@@ -8,10 +8,15 @@ The composition and length of the passwords is configurable.
 
 Two commands can be used:
 - `Copy New Password to the Clipboard`
-- `Copy New Password to the current editor window`
+- `Insert New Password`
 
-See [Extension Settings](#extension-settings) to see the ways in which the password composition can be controlled.
+These comands can be accessed from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac), typing `password` and selecting the desired function. Alternately, they can be assigned to a key binding.
 
+Using the Code [multi-cursor](https://code.visualstudio.com/docs/editor/codebasics#_multiple-selections-multicursor) feature, multiple passwords can be generated and inserted into the editor window at the same time.
+
+See [Extension Settings](#extension-settings) for the ways in which the password composition can be controlled.
+
+> This extension works with Code on the desktop and for the web.
 
 ## Requirements
 
@@ -21,23 +26,31 @@ None.
 
 Here's the data formatted as a markdown table of key, default value, and description:
 
-| Key | Default Value | Description |
+| Name | Default Value | Description and Key |
 |-----|---------------|-------------|
-| vscode-password-generator.length | 10 | The length of password to generate |
-| vscode-password-generator.includeUppercaseLetters | true | Include uppercase letters in the generated password |
-| vscode-password-generator.includeLowercaseLetters | true | Include lowercase letters in the generated password |
-| vscode-password-generator.includeNumbers | false | Include numbers in the generated password |
-| vscode-password-generator.includeSymbols | false | Include symbols in the generated password |
-| vscode-password-generator.symbolCharacters | "" | Define the set of symbols to select from instead of the default used by the extension |
-| vscode-password-generator.excludeCharacters | "" | Define a set of characters to exclude from the generated password |
-| vscode-password-generator.excludeSimilarCharacters | false | Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password |
-| vscode-password-generator.strict | true | Ensure least one of each included character type in the generated password |
+| Length | 10 | `vscode-password-generator.length`<br/>The length of password to generate. |
+| Include Uppercase Letters | true | `vscode-password-generator.includeUppercaseLetters`<br/>Include uppercase letters in the generated password. |
+| Include Lowercase Letters | true | `vscode-password-generator.includeLowercaseLetters`<br/>Include lowercase letters in the generated password. |
+| Include Numbers | false | `vscode-password-generator.includeNumbers`<br/>Include numbers in the generated password. |
+| Include Symbols | false | `vscode-password-generator.includeSymbols`<br/>Include symbols in the generated password. |
+| Symbol Characters | "" | `vscode-password-generator.symbolCharacters`<br/>Define the set of symbols to select from instead of the default used by the extension. |
+| Exclude Characters | "" | `vscode-password-generator.excludeCharacters`<br/>Define a set of characters to exclude from the generated password. |
+| Exclude Similar Characters | false | `vscode-password-generator.excludeSimilarCharacters`<br/>Exclude similar looking characters (e.g. 0oO, 1lI) from the generated password. |
+| Strict | true | `vscode-password-generator.strict`<br/>Ensure least one of each included character type in the generated password. |
+
+> Usage hint, if there is a requirement that passwords include letters, numbers and special characters, use the Strict (`vscode-password-generator.strict`) configuration setting.
 
 ## Known Issues
 
 None reported.
 
 ## Release Notes
+
+### 1.0.1
+
+- Added information about multi-cursor operation
+- Add more usage information to README and improved settings table
+- Modified a command name for clarity
 
 ### 1.0.0
 

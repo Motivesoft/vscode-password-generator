@@ -2,7 +2,7 @@
   "name": "vscode-password-generator",
   "displayName": "Password Generator Extension",
   "description": "Generates passwords directly onto the clipboard or the current editor window",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -40,7 +40,7 @@
       },
       {
         "command": "vscode-password-generator.generateToEditor",
-        "title": "Copy New Password to the current editor window"
+        "title": "Insert New Password"
       }
     ],
     "configuration": [
