@@ -46,6 +46,10 @@ None reported.
 
 ## Release Notes
 
+### 1.0.2
+
+- Updated dependencies based on GitHub Dependabot alerts
+
 ### 1.0.1
 
 - Added information about multi-cursor operation

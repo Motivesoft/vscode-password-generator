@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.2]
+
+- Updated dependencies based on GitHub Dependabot alerts
+
 ## [1.0.1]
 
 - Added information about multi-cursor operation
@@ -14,5 +18,6 @@
   - Choose the desired combination of upper and lower case letters, numbers, symbols and length 
 - Works on Code for the desktop or for the web
 
+[1.0.2]: https://github.com/Motivesoft/vscode-password-generator/releases/tag/v1.0.2
 [1.0.1]: https://github.com/Motivesoft/vscode-password-generator/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Motivesoft/vscode-password-generator/releases/tag/v1.0.0
